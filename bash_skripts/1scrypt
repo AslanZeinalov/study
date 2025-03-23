@@ -1,0 +1,9 @@
+#!/bin/bash
+
+echo "Привет, ты сейчас в директории: "
+echo " "
+pwd
+echo " "
+echo "Твоя роль: "
+echo " "
+whoami
