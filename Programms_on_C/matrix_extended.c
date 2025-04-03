@@ -3,7 +3,7 @@
 #define NMAX 100
 
 void read1(int arr[NMAX][NMAX]) {
-    // Для статического массива можно оставить пустым или добавить функциональность.
+    
 }
 
 int read2(int ***arr, int L, int H) {
@@ -62,7 +62,7 @@ void min_func(int **minArr, int H, int L, int **arr) {
     if (*minArr == NULL) return;
 
     for (int i = 0; i < H; i++) {
-        int mini = arr[0][i]; // Инициализация с первым элементом строки.
+        int mini = arr[0][i]; 
         for (int j = 1; j < L; j++) {
             if (arr[j][i] < mini) {
                 mini = arr[j][i];
@@ -77,7 +77,7 @@ void max_func(int **maxArr, int L, int H, int **arr) {
     if (*maxArr == NULL) return;
 
     for (int i = 0; i < L; i++) {
-        int maxi = arr[i][0]; // Инициализация с первым элементом строки.
+        int maxi = arr[i][0]; 
         for (int j = 1; j < H; j++) {
             if (arr[i][j] > maxi) {
                 maxi = arr[i][j];
