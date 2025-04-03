@@ -1,20 +1,19 @@
 #include <stdio.h>
+#include <stdlib.h>
 
-void read(int *mass) {
-    int count = 0;
-    while (count < 10) {
-        if (scanf("%d", &mass[count]) != 1) {
-             break; 
-        }
-        count++;
-    }
-        if (count < 10) {
-        printf("n/a\n");  
-    }
+int read(int n, int *mass) {
+	for (int k = 0; k < n; k++) {
+		if (scanf("%d", &mass[k]) != 1) {
+			printf("n/a\n");
+			return 1;
+		}
+	}
+	printf("\n");
+	return 1;
 }
-void sort(int *mass) {
-    for(int j = 0; j < 9; j++) {
-        for(int l = 0; l < 9 - j; l++) {
+void sort(int *mass, int n) {
+    for(int j = 0; j < n - 1; j++) {
+        for(int l = 0; l < n -1; l++) {
             if (mass[l] > mass[l + 1]) {
                 int tmp = mass[l];
                 mass[l] = mass[l + 1];
@@ -24,18 +23,28 @@ void sort(int *mass) {
     }
 }
 
-void write(int *mass) {
-    for (int i = 0; i < 10; i++) {
+void write(int *mass, int n) {
+    for (int i = 0; i < n; i++) {
         printf("%d ", mass[i]);
     }
-    printf("\n"); 
-}
+    printf("\n");
+  }
 
 int main() {
-    int mass[10];
-    read(mass);
-    sort(mass);
-    write(mass);
-    return 0;
+	int* mass;
+	int n;
+    	if (scanf("%d", &n) != 1) {
+		printf("n/a\n");
+	}
+	mass = (int*)malloc(n * sizeof(int));
+	if (mass == NULL){
+		printf("n/a");
+		return 1;
+	}
+    	read(n, mass);
+    	sort(mass, n);
+    	write(mass, n);
+	free(mass);
+    	return 0;
 }
 
