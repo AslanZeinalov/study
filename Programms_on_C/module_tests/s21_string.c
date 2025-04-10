@@ -34,4 +34,26 @@ char *s21_strcpy(char *dest, const char *src) {
     *dest = '\0'; 
 
     return original_dest; 
-}    
+}
+
+char *s21_strcat(char *dest, const char *src) {
+    if (dest == NULL || src == NULL) {
+        return NULL;
+    }
+
+    char *original_dest = dest;
+
+   while (*dest != '\0') {
+        dest++;
+    }
+
+    while (*src != '\0') {
+        *dest = *src;
+        dest++;
+        src++;
+    }
+
+    *dest = '\0';
+
+    return original_dest;
+}

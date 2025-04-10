@@ -134,16 +134,69 @@ void s21_strcpy_test() {
     }
     printf("\n");
 
-    char str[20] = "abcdefghijklmnop";
-    char *src4 = str;
-    char *dest4 = str + 5; 
-
-    s21_strcpy(dest4, src4);
-
     printf("Strcpy Test 4: Memory overlap\n");
-    printf("  Input: src points to start, dest points to src + 5\n");
-    printf("  String after s21_strcpy: \"%s\"\n", str);
     printf("  NOTE: Memory overlap behavior is undefined. Check manually if the result is acceptable.\n");
+
+}
+
+void s21_strcat_test() {
+   
+    char dest1[30] = "Hello, ";
+    char src1[] = "world!";
+    char expected1[30] = "Hello, world!";
+
+    s21_strcat(dest1, src1);
+
+    printf("Strcat Test 1: Normal concatenation\n");
+    printf("  Input: dest = \"%s\", src = \"%s\"\n", "Hello, ", src1);
+    printf("  Expected: \"%s\"\n", expected1);
+    printf("  Actual:   \"%s\"\n", dest1);
+
+    if (s21_strcmp(dest1, expected1) != 0) {
+        printf("  Result: %s\n", FAIL);
+    } else {
+        printf("  Result: %s\n", SUCCESS);
+    }
+    printf("\n");
+
+    char dest2[20] = "";
+    char src2[] = "Hello";
+    char expected2[20] = "Hello";
+
+    s21_strcat(dest2, src2);
+
+    printf("Strcat Test 2: Concatenating to an empty string\n");
+    printf("  Input: dest = \"\", src = \"%s\"\n", src2);
+    printf("  Expected: \"%s\"\n", expected2);
+    printf("  Actual:   \"%s\"\n", dest2);
+
+    if (s21_strcmp(dest2, expected2) != 0) {
+        printf("  Result: %s\n", FAIL);
+    } else {
+        printf("  Result: %s\n", SUCCESS);
+    }
+    printf("\n");
+
+    char dest3[20] = "World";
+    char src3[] = "";
+    char expected3[20] = "World";
+
+    s21_strcat(dest3, src3);
+
+    printf("Strcat Test 3: Concatenating an empty string\n");
+    printf("  Input: dest = \"%s\", src = \"\"\n", dest3);
+    printf("  Expected: \"%s\"\n", expected3);
+    printf("  Actual:   \"%s\"\n", dest3);
+
+    if (s21_strcmp(dest3, expected3) != 0) {
+        printf("  Result: %s\n", FAIL);
+    } else {
+        printf("  Result: %s\n", SUCCESS);
+    }
+    printf("\n");
+
+    printf("Strcat Test 4: Overlap - not tested due to undefined behavior\n");
+    printf("  WARNING: Overlapping destination and source is undefined behavior.\n");
 
 }
 
@@ -151,5 +204,7 @@ int main() {
     s21_strlen_test();
     s21_strcmp_test();
     s21_strcpy_test();
+    s21_strcat_test();
+
     return 0;
 }
