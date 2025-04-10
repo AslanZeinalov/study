@@ -288,11 +288,116 @@ void s21_strchr_test() {
     printf("\n");
 }
 
+void s21_strstr_test() {
+    const char haystack1[] = "This is a test string";
+    const char needle1[] = "test";
+    char *expected1 = (char*)haystack1 + 10;
+    char *actual1 = s21_strstr(haystack1, needle1);
+
+    printf("Strstr Test 1: Substring found\n");
+    printf("  Input: haystack = \"%s\", needle = \"%s\"\n", haystack1, needle1);
+    printf("  Expected: %p\n", (void*)expected1);
+    printf("  Actual:   %p\n", (void*)actual1);
+
+    if (actual1 == expected1) {
+        printf("  Result: %s\n", SUCCESS);
+    } else {
+        printf("  Result: %s\n", FAIL);
+    }
+    printf("\n");
+
+    const char haystack2[] = "This is a test string";
+    const char needle2[] = "xyz";
+    char *expected2 = NULL;
+    char *actual2 = s21_strstr(haystack2, needle2);
+
+    printf("Strstr Test 2: Substring not found\n");
+    printf("  Input: haystack = \"%s\", needle = \"%s\"\n", haystack2, needle2);
+    printf("  Expected: %p\n", (void*)expected2);
+    printf("  Actual:   %p\n", (void*)actual2);
+
+    if (actual2 == expected2) {
+        printf("  Result: %s\n", SUCCESS);
+    } else {
+        printf("  Result: %s\n", FAIL);
+    }
+    printf("\n");
+
+    const char haystack3[] = "This is a test string";
+    const char needle3[] = "";
+    char *expected3 = (char*)haystack3;
+    char *actual3 = s21_strstr(haystack3, needle3);
+
+    printf("Strstr Test 3: Empty needle\n");
+    printf("  Input: haystack = \"%s\", needle = \"%s\"\n", haystack3, needle3);
+    printf("  Expected: %p\n", (void*)expected3);
+    printf("  Actual:   %p\n", (void*)actual3);
+
+    if (actual3 == expected3) {
+        printf("  Result: %s\n", SUCCESS);
+    } else {
+        printf("  Result: %s\n", FAIL);
+    }
+    printf("\n");
+
+    const char haystack4[] = "";
+    const char needle4[] = "test";
+    char *expected4 = NULL;
+    char *actual4 = s21_strstr(haystack4, needle4);
+
+    printf("Strstr Test 4: Empty haystack\n");
+    printf("  Input: haystack = \"%s\", needle = \"%s\"\n", haystack4, needle4);
+    printf("  Expected: %p\n", (void*)expected4);
+    printf("  Actual:   %p\n", (void*)actual4);
+
+    if (actual4 == expected4) {
+        printf("  Result: %s\n", SUCCESS);
+    } else {
+        printf("  Result: %s\n", FAIL);
+    }
+    printf("\n");
+
+    const char haystack5[] = "test";
+    const char needle5[] = "This is a test string";
+    char *expected5 = NULL;
+    char *actual5 = s21_strstr(haystack5, needle5);
+
+    printf("Strstr Test 5: Needle longer than haystack\n");
+    printf("  Input: haystack = \"%s\", needle = \"%s\"\n", haystack5, needle5);
+    printf("  Expected: %p\n", (void*)expected5);
+    printf("  Actual:   %p\n", (void*)actual5);
+
+    if (actual5 == expected5) {
+        printf("  Result: %s\n", SUCCESS);
+    } else {
+        printf("  Result: %s\n", FAIL);
+    }
+    printf("\n");
+
+    const char haystack6[] = "testing";
+    const char needle6[] = "test";
+    char *expected6 = (char*)haystack6;
+    char *actual6 = s21_strstr(haystack6, needle6);
+
+    printf("Strstr Test 6: Needle is at the beginning of haystack\n");
+    printf("  Input: haystack = \"%s\", needle = \"%s\"\n", haystack6, needle6);
+    printf("  Expected: %p\n", (void*)expected6);
+    printf("  Actual:   %p\n", (void*)actual6);
+
+    if (actual6 == expected6) {
+        printf("  Result: %s\n", SUCCESS);
+    } else {
+        printf("  Result: %s\n", FAIL);
+    }
+    printf("\n");
+}
+
 int main() {
     s21_strlen_test();
     s21_strcmp_test();
     s21_strcpy_test();
     s21_strcat_test();
     s21_strchr_test();
+    s21_strstr_test();
     return 0;
 }

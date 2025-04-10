@@ -77,3 +77,30 @@ char *s21_strchr(const char *str, int c) {
     return NULL;
 }
 
+char *s21_strstr(const char *haystack, const char *needle) {
+    if (haystack == NULL || needle == NULL) {
+        return NULL;
+    }
+
+    if (*needle == '\0') {
+        return (char *)haystack;
+    }
+
+    while (*haystack != '\0') {
+        const char *h = haystack;
+        const char *n = needle;
+
+        while (*n != '\0' && *h == *n) {
+            h++;
+            n++;
+        }
+
+        if (*n == '\0') {
+            return (char *)haystack;
+        }
+
+        haystack++;
+    }
+
+    return NULL;
+}
