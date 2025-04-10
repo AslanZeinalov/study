@@ -392,6 +392,123 @@ void s21_strstr_test() {
     printf("\n");
 }
 
+void s21_strtok_test() {
+    char str1[] = "This is a test,string.";
+    char delim1[] = " ,.";
+    char *expected_tokens1[] = {"This", "is", "a", "test", "string", NULL};
+    char *token1;
+    int i = 0;
+    char str1_copy[sizeof(str1)];
+    s21_strcpy(str1_copy, str1);
+
+    printf("Strtok Test 1: Normal case\n");
+    printf("  Input: str = \"%s\", delim = \"%s\"\n", str1_copy, delim1);
+    token1 = s21_strtok(str1, delim1);
+    while (token1 != NULL && expected_tokens1[i] != NULL) {
+        printf("  Expected: %s, Actual: %s\n", expected_tokens1[i], token1);
+        if (s21_strcmp(token1, expected_tokens1[i]) != 0) {
+            printf("  Result: %s\n", FAIL);
+            return;
+        }
+        token1 = s21_strtok(NULL, delim1);
+        i++;
+    }
+    if (token1 != NULL || expected_tokens1[i] != NULL) {
+        printf("  Result: %s\n", FAIL);
+        return;
+    }
+    printf("  Result: %s\n", SUCCESS);
+    printf("\n");
+
+    char str2[] = "abc,,def.ghi";
+    char delim2[] = ",.";
+    char *expected_tokens2[] = {"abc", "def", "ghi", NULL};
+    char *token2;
+    i = 0;
+    char str2_copy[sizeof(str2)];
+    s21_strcpy(str2_copy, str2);
+
+    printf("Strtok Test 2: Multiple delimiters\n");
+    printf("  Input: str = \"%s\", delim = \"%s\"\n", str2_copy, delim2);
+    token2 = s21_strtok(str2, delim2);
+    while (token2 != NULL && expected_tokens2[i] != NULL) {
+        printf("  Expected: %s, Actual: %s\n", expected_tokens2[i], token2);
+        if (s21_strcmp(token2, expected_tokens2[i]) != 0) {
+            printf("  Result: %s\n", FAIL);
+            return;
+        }
+        token2 = s21_strtok(NULL, delim2);
+        i++;
+    }
+    if (token2 != NULL || expected_tokens2[i] != NULL) {
+        printf("  Result: %s\n", FAIL);
+        return;
+    }
+    printf("  Result: %s\n", SUCCESS);
+    printf("\n");
+
+    char str3[] = "abcdef";
+    char delim3[] = ",.";
+    char *expected_tokens3[] = {"abcdef", NULL};
+    char *token3;
+    i = 0;
+    char str3_copy[sizeof(str3)];
+    s21_strcpy(str3_copy, str3);
+
+    printf("Strtok Test 3: No delimiters\n");
+    printf("  Input: str = \"%s\", delim = \"%s\"\n", str3_copy, delim3);
+    token3 = s21_strtok(str3, delim3);
+    while (token3 != NULL && expected_tokens3[i] != NULL) {
+        printf("  Expected: %s, Actual: %s\n", expected_tokens3[i], token3);
+        if (s21_strcmp(token3, expected_tokens3[i]) != 0) {
+            printf("  Result: %s\n", FAIL);
+            return;
+        }
+        token3 = s21_strtok(NULL, delim3);
+        i++;
+    }
+    if (token3 != NULL || expected_tokens3[i] != NULL) {
+        printf("  Result: %s\n", FAIL);
+        return;
+    }
+    printf("  Result: %s\n", SUCCESS);
+    printf("\n");
+
+    char str4[] = ",";
+    char delim4[] = ",";
+    char str4_copy[sizeof(str4)];
+    s21_strcpy(str4_copy, str4);
+
+    printf("Strtok Test 4: Delimiter is the only character\n");
+    printf("  Input: str = \"%s\", delim = \"%s\"\n", str4_copy, delim4);
+    char *token4 = s21_strtok(str4, delim4);
+
+    if (token4 != NULL) {
+        printf("  Result: %s\n", FAIL);
+        return;
+    }
+
+    printf("  Result: %s\n", SUCCESS);
+    printf("\n");
+
+    char str5[] = "";
+    char delim5[] = ",";
+    char str5_copy[sizeof(str5)];
+    s21_strcpy(str5_copy, str5);
+
+    printf("Strtok Test 5: Empty String\n");
+    printf("  Input: str = \"%s\", delim = \"%s\"\n", str5_copy, delim5);
+    char *token5 = s21_strtok(str5, delim5);
+
+    if (token5 != NULL) {
+        printf("  Result: %s\n", FAIL);
+        return;
+    }
+
+    printf("  Result: %s\n", SUCCESS);
+    printf("\n");
+}
+
 int main() {
     s21_strlen_test();
     s21_strcmp_test();
@@ -399,5 +516,6 @@ int main() {
     s21_strcat_test();
     s21_strchr_test();
     s21_strstr_test();
+    s21_strtok_test();
     return 0;
 }

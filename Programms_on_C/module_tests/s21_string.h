@@ -10,5 +10,6 @@ char *s21_strcpy(char *dest, const char *src);
 char *s21_strcat(char *dest, const char *src);
 char *s21_strchr(const char *str, int c);
 char *s21_strstr(const char *haystack, const char *needle);
+char *s21_strtok(char *str, const char *delim);
 
 #endif  // S21_STRING_H
