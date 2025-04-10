@@ -1,12 +1,12 @@
 CC = gcc
 CFLAGS = -Wall -Wextra -Werror -std=c99
-TARGET = strlen_tests
+TARGET = string_tests
 
 OBJS = s21_string.o s21_string_test.o
 
-all: strlen_tests
+all: string_tests
 
-strlen_tests: $(TARGET)
+string_tests: $(TARGET)
 
 $(TARGET): $(OBJS)
 	$(CC) $(CFLAGS) -o $(TARGET) $(OBJS)

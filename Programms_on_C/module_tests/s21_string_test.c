@@ -78,8 +78,78 @@ void s21_strcmp_test() {
     }
 }
 
+void s21_strcpy_test() {
+    
+    char dest1[20] = "";
+    char src1[] = "Hello, world!";
+    char expected1[20] = "Hello, world!"; 
+
+    s21_strcpy(dest1, src1);
+
+    printf("Strcpy Test 1: Normal string\n");
+    printf("  Input: src = \"%s\"\n", src1);
+    printf("  Expected: \"%s\"\n", expected1);
+    printf("  Actual:   \"%s\"\n", dest1);
+
+    if (s21_strcmp(dest1, expected1) != 0) {
+        printf("  Result: %s\n", FAIL);
+    } else {
+        printf("  Result: %s\n", SUCCESS);
+    }
+    printf("\n");
+
+    char dest2[10] = "initial";
+    char src2[] = "";
+    char expected2[10] = ""; 
+
+    s21_strcpy(dest2, src2);
+
+    printf("Strcpy Test 2: Empty string\n");
+    printf("  Input: src = \"\"\n");
+    printf("  Expected: \"%s\"\n", expected2);
+    printf("  Actual:   \"%s\"\n", dest2);
+
+    if (s21_strcmp(dest2, expected2) != 0) {
+        printf("  Result: %s\n", FAIL);
+    } else {
+        printf("  Result: %s\n", SUCCESS);
+    }
+    printf("\n");
+
+    char dest3[20] = "";
+    char src3[] = "123abc456!@#";
+    char expected3[20] = "123abc456!@#";
+
+    s21_strcpy(dest3, src3);
+
+    printf("Strcpy Test 3: String with numbers and symbols\n");
+    printf("  Input: src = \"%s\"\n", src3);
+    printf("  Expected: \"%s\"\n", expected3);
+    printf("  Actual:   \"%s\"\n", dest3);
+
+    if (s21_strcmp(dest3, expected3) != 0) {
+        printf("  Result: %s\n", FAIL);
+    } else {
+        printf("  Result: %s\n", SUCCESS);
+    }
+    printf("\n");
+
+    char str[20] = "abcdefghijklmnop";
+    char *src4 = str;
+    char *dest4 = str + 5; 
+
+    s21_strcpy(dest4, src4);
+
+    printf("Strcpy Test 4: Memory overlap\n");
+    printf("  Input: src points to start, dest points to src + 5\n");
+    printf("  String after s21_strcpy: \"%s\"\n", str);
+    printf("  NOTE: Memory overlap behavior is undefined. Check manually if the result is acceptable.\n");
+
+}
+
 int main() {
     s21_strlen_test();
     s21_strcmp_test();
+    s21_strcpy_test();
     return 0;
 }
