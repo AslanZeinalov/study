@@ -200,11 +200,99 @@ void s21_strcat_test() {
 
 }
 
+void s21_strchr_test() {
+
+    const char str1[] = "Hello, world!";
+    int char1 = 'w';
+    char *expected1 = (char*)str1 + 7; 
+    char *actual1 = s21_strchr(str1, char1);
+
+    printf("Strchr Test 1: Character found\n");
+    printf("  Input: str = \"%s\", char = '%c'\n", str1, char1);
+    printf("  Expected: %p\n", (void*)expected1);
+    printf("  Actual:   %p\n", (void*)actual1);
+
+    if (actual1 == expected1) {
+        printf("  Result: %s\n", SUCCESS);
+    } else {
+        printf("  Result: %s\n", FAIL);
+    }
+    printf("\n");
+
+    const char str2[] = "Hello, world!";
+    int char2 = 'z';
+    char *expected2 = NULL;
+    char *actual2 = s21_strchr(str2, char2);
+
+    printf("Strchr Test 2: Character not found\n");
+    printf("  Input: str = \"%s\", char = '%c'\n", str2, char2);
+    printf("  Expected: %p\n", (void*)expected2);
+    printf("  Actual:   %p\n", (void*)actual2);
+
+    if (actual2 == expected2) {
+        printf("  Result: %s\n", SUCCESS);
+    } else {
+        printf("  Result: %s\n", FAIL);
+    }
+    printf("\n");
+
+    const char str3[] = "Hello, world!";
+    int char3 = '\0';
+    char *expected3 = (char*)str3 + 13; 
+    char *actual3 = s21_strchr(str3, char3);
+
+    printf("Strchr Test 3: Find null terminator\n");
+    printf("  Input: str = \"%s\", char = '\\0'\n", str3);
+    printf("  Expected: %p\n", (void*)expected3);
+    printf("  Actual:   %p\n", (void*)actual3);
+
+    if (actual3 == expected3) {
+        printf("  Result: %s\n", SUCCESS);
+    } else {
+        printf("  Result: %s\n", FAIL);
+    }
+    printf("\n");
+
+    const char str4[] = "";
+    int char4 = 'a';
+    char *expected4 = NULL;
+    char *actual4 = s21_strchr(str4, char4);
+
+    printf("Strchr Test 4: Empty string\n");
+    printf("  Input: str = \"\", char = 'a'\n");
+    printf("  Expected: %p\n", (void*)expected4);
+    printf("  Actual:   %p\n", (void*)actual4);
+
+    if (actual4 == expected4) {
+        printf("  Result: %s\n", SUCCESS);
+    } else {
+        printf("  Result: %s\n", FAIL);
+    }
+    printf("\n");
+
+    const char str5[] = "abcde";
+    int char5 = 'a';
+    char *expected5 = (char*)str5;
+    char *actual5 = s21_strchr(str5, char5);
+
+    printf("Strchr Test 5: Character is first character of string\n");
+    printf("  Input: str = \"%s\", char = '%c'\n", str5, char5);
+    printf("  Expected: %p\n", (void*)expected5);
+    printf("  Actual:   %p\n", (void*)actual5);
+
+    if (actual5 == expected5) {
+        printf("  Result: %s\n", SUCCESS);
+    } else {
+        printf("  Result: %s\n", FAIL);
+    }
+    printf("\n");
+}
+
 int main() {
     s21_strlen_test();
     s21_strcmp_test();
     s21_strcpy_test();
     s21_strcat_test();
-
+    s21_strchr_test();
     return 0;
 }

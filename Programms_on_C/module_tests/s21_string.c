@@ -57,3 +57,23 @@ char *s21_strcat(char *dest, const char *src) {
 
     return original_dest;
 }
+
+char *s21_strchr(const char *str, int c) {
+    if (str == NULL) {
+        return NULL;
+    }
+
+    while (*str != '\0') {
+        if (*str == c) {
+            return (char *)str;
+        }
+        str++;
+    }
+
+    if (c == '\0') {
+        return (char *)str;
+    }
+
+    return NULL;
+}
+
