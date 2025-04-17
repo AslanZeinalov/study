@@ -1,26 +1,43 @@
 CC = gcc
-FLAGS = -Wall -Werror -g
-TARGET = bst_create_test
+CFLAGS = -Wall -Werror -g
 
-OBJS = bst.o bst_create_test.o
+TARGETS = bst_create_test bst_insert_test bst_traverse_test
 
-all: $(TARGET)
+all: $(TARGETS)
 
-$(TARGET): $(OBJS)
-	$(CC) $(FLAGS) -o $(TARGET) $(OBJS)
+bst_create_test: bst.o bst_create_test.o
+	$(CC) $(CFLAGS) bst.o bst_create_test.o -o bst_create_test
+
+bst_insert_test: bst.o bst_insert_test.o
+	$(CC) $(CFLAGS) bst.o bst_insert_test.o -o bst_insert_test
+
+bst_traverse_test: bst.o bst_traverse_test.o
+	$(CC) $(CFLAGS) bst.o bst_traverse_test.o -o bst_traverse_test
 
 bst.o: bst.c bst.h
-	$(CC) $(FLAGS) -c bst.c -o bst.o
+	$(CC) $(CFLAGS) -c bst.c
 
 bst_create_test.o: bst_create_test.c bst.h
-	$(CC) $(FLAGS) -c bst_create_test.c -o bst_create_test.o
+	$(CC) $(CFLAGS) -c bst_create_test.c
 
-clean: 
-	rm -f *.o $(TARGET)
+bst_insert_test.o: bst_insert_test.c bst.h
+	$(CC) $(CFLAGS) -c bst_insert_test.c
+
+bst_traverse_test.o: bst_traverse_test.c bst.h
+	$(CC) $(CFLAGS) -c bst_traverse_test.c
+
+clean:
+	rm -f *.o $(TARGETS)
 
 rebuild: clean all
 
-run: 
-	./$(TARGET)
+run1: 
+	./bst_create_test
 
-.PHONY: all clean rebuild run
+run2:
+	./bst_insert_test
+
+run3: 
+	./bst_traverse_test
+
+run: run1 run2 run3

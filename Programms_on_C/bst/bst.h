@@ -7,9 +7,8 @@ typedef struct Node {
     struct Node* right;
 } Node;
 
-typedef Node* t_btree; // Определение t_btree как указателя на Node
+typedef Node* t_btree;
 
-// Enum для обозначения места вставки
 typedef enum {
     INSERTED_LEFT,
     INSERTED_RIGHT,
@@ -18,8 +17,14 @@ typedef enum {
 } InsertResult;
 
 Node* bstree_create_node(int data);
-InsertResult bstree_insert(t_btree *root, int item, int (*cmpf) (int, int)); // ИСПРАВЛЕНО: Теперь возвращает InsertResult
+InsertResult bstree_insert(t_btree *root, int item, int (*cmpf) (int, int));
 void freeTree(t_btree root);
-void printTree(t_btree root, int level);
 
-#endif // BST_H
+void bstree_apply_infix(t_btree root, void (*applyf) (int));
+void bstree_apply_prefix(t_btree root, void (*applyf) (int));
+void bstree_apply_postfix(t_btree root, void (*applyf) (int));
+
+int intComparatorAsc(int a, int b);
+int intComparatorDesc(int a, int b);
+
+#endif
