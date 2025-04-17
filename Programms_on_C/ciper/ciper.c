@@ -3,11 +3,12 @@
 #include <string.h>
 
 #define MAX_FILE_PATH_LENGTH 256
+#define MAX_INPUT_LENGTH 256
 
 void menu() {
   printf("\nМеню программы:\n");
   printf("1. Прочитать файл\n");
-  printf("2. (Еще не установлено)\n");
+  printf("2. Добавить строку в файл\n");
   printf("3. Выход из программы\n");
   printf("Введите комманду: ");
 }
@@ -38,18 +39,17 @@ void read_and_print_file(const char *file_path) {
 
   int ch;
 
-  // Проверяем, пуст ли файл ИЛИ произошла ошибка при чтении
-  if ((ch = fgetc(file)) == EOF) { // read the first character
-    if (ferror(file)) { // Check for errors during reading
-      perror("Error reading file"); // Output error message to stderr
-      fclose(file); // Close the file
-      return;        // Exit the function
+  if ((ch = fgetc(file)) == EOF) { 
+    if (ferror(file)) { 
+      perror("Error reading file"); 
+      fclose(file); 
+      return;
     }
     printf("n/a\n");
     fclose(file);
     return;
   }
-  rewind(file); // Reset the file position
+  rewind(file);
 
   while ((ch = fgetc(file)) != EOF) {
     putchar(ch);
@@ -58,9 +58,30 @@ void read_and_print_file(const char *file_path) {
   fclose(file);
 }
 
+void input_string(const char *file_path) {
+	char input_string[ MAX_INPUT_LENGTH];
+
+	printf("Введите строку для вставки: ");
+	if (fgets(input_string, MAX_INPUT_LENGTH, stdin) == NULL) {
+		perror("Error reading input");
+		return;
+	}
+	input_string[strcspn(input_string, "\n")] = 0;
+	FILE *file = fopen(file_path, "a");
+	if(!file) {
+		printf("Error opening file for appending.\n");
+		return;
+	}
+
+	fprintf(file, "%s\n", input_string);
+	fclose(file);
+	printf("Строка успешно добавлена в файл.\n");
+	read_and_print_file(file_path);
+}
+
 int main() {
   int option;
-  char *file_path;
+  char *file_path = NULL;
 
   do {
     menu();
@@ -73,12 +94,16 @@ int main() {
 
     switch (option) {
       case 1:
+	if(file_path) free(file_path);
         file_path = get_file_path();
         read_and_print_file(file_path);
-        free(file_path);
         break;
       case 2:
-        printf("Опция 2 не установлена.\n");
+	if(!file_path) {
+		printf("Сначала выберите файл в пункте 1.\n");
+	}else {
+      		input_string(file_path);
+	}
         break;
       case 3:
         printf("Выход из программы...\n");
@@ -87,5 +112,7 @@ int main() {
         printf("Неверная опция. Повторите попытку\n");
     }
   } while (option != 3);
+
+  if(file_path) free(file_path);
   return 0;
 }
