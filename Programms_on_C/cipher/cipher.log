@@ -1,0 +1,24 @@
+[2025-04-18 08:42:56] [INFO] Приложение запущено
+[2025-04-18 08:44:19] [DEBUG] Введен путь к файлу
+[2025-04-18 08:44:19] [INFO] Чтение и вывод файла: /home/kali/Desktop/test_cipher/test.c
+[2025-04-18 08:44:35] [INFO] Строка добавлена в файл: /home/kali/Desktop/test_cipher/test.c
+[2025-04-18 08:44:35] [INFO] Чтение и вывод файла: /home/kali/Desktop/test_cipher/test.c
+[2025-04-18 08:44:56] [INFO] Обработка директории: /home/kali/Desktop/test_cipher/t со сдвигом: 5
+[2025-04-18 08:44:56] [ERROR] Ошибка открытия директории: /home/kali/Desktop/test_cipher/t
+[2025-04-18 08:45:06] [INFO] Обработка директории: /home/kali/Desktop/test_cipher/test.c со сдвигом: 5
+[2025-04-18 08:45:06] [ERROR] Ошибка открытия директории: /home/kali/Desktop/test_cipher/test.c
+[2025-04-18 08:45:15] [INFO] Обработка директории: /home/kali/Desktop/test_cipher со сдвигом: 5
+[2025-04-18 08:45:15] [INFO] Попытка шифрования Цезаря для файла: /home/kali/Desktop/test_cipher/test.c со сдвигом: 5
+[2025-04-18 08:45:15] [INFO] Файл /home/kali/Desktop/test_cipher/test.c успешно зашифрован с сдвигом: 5
+[2025-04-18 08:45:15] [INFO] Попытка очистки файла: /home/kali/Desktop/test_cipher/test.h
+[2025-04-18 08:45:15] [INFO] Файл /home/kali/Desktop/test_cipher/test.h успешно очищен
+[2025-04-18 08:45:15] [INFO] Обработка директории: /home/kali/Desktop/test_cipher/test_dir2 со сдвигом: 5
+[2025-04-18 08:45:15] [INFO] Попытка шифрования Цезаря для файла: /home/kali/Desktop/test_cipher/test_dir2/test2.c со сдвигом: 5
+[2025-04-18 08:45:15] [INFO] Файл /home/kali/Desktop/test_cipher/test_dir2/test2.c успешно зашифрован с сдвигом: 5
+[2025-04-18 08:45:15] [INFO] Попытка очистки файла: /home/kali/Desktop/test_cipher/test_dir2/test2.h
+[2025-04-18 08:45:15] [INFO] Файл /home/kali/Desktop/test_cipher/test_dir2/test2.h успешно очищен
+[2025-04-18 08:45:15] [INFO] Закончена обработка директории: /home/kali/Desktop/test_cipher/test_dir2
+[2025-04-18 08:45:15] [INFO] Закончена обработка директории: /home/kali/Desktop/test_cipher
+[2025-04-18 08:45:24] [DEBUG] Введен путь к файлу
+[2025-04-18 08:45:24] [INFO] Чтение и вывод файла: /home/kali/Desktop/test_cipher/test.c
+[2025-04-18 08:45:29] [INFO] Приложение завершено
